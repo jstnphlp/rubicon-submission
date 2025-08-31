@@ -14,8 +14,10 @@ public class Main {
     public static void main(String[] args) {
         AppService appService = new DrawingAppService();
         DrawingFrame drawingFrame = new DrawingFrame(appService);
-        drawingFrame.setVisible(true);
+
         drawingFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        drawingFrame.setSize(500,500);
+        drawingFrame.setSize(500, 500);
+        drawingFrame.setLocationRelativeTo(null);
+        drawingFrame.setVisible(true);
     }
 }

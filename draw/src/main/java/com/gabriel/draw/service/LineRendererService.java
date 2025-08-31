@@ -8,12 +8,23 @@ import java.awt.*;
 
 
 public class LineRendererService implements RendererService {
+    private Line previewLine;
 
-    @Override
-    public void render(Graphics g, Shape shape, boolean xor) {
-        Line line = (Line) shape;
-      //  g.setColor(shape.getColor());
-        g.setXORMode(shape.getColor());
-        g.drawLine(line.getLocation().x, line.getLocation().y, line.getEnd().x, line.getEnd().y);
+        @Override
+        public void render(Graphics g, Shape shape, boolean xor) {
+            Line line = (Line) shape;
+
+            if (xor) {
+                // XOR preview mode
+                g.setXORMode(Color.WHITE); // background color you want to XOR against
+                g.setColor(shape.getColor()); // use the final color
+            } else {
+                // Normal drawing
+                g.setPaintMode();
+                g.setColor(shape.getColor());
+            }
+
+            g.drawLine(line.getLocation().x, line.getLocation().y,
+                    line.getEnd().x, line.getEnd().y);
+        }
     }
-}
