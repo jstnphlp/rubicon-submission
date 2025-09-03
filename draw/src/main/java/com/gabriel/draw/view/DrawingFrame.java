@@ -25,7 +25,6 @@ public class DrawingFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // ✅ Create toolbar only once
         if (toolBar == null) {
             toolBar = new JToolBar();
             JButton lineButton = new JButton("Line");
@@ -44,7 +43,6 @@ public class DrawingFrame extends JFrame {
             add(toolBar, BorderLayout.NORTH);
         }
 
-        // ✅ Ensure DrawingView is only added once
         getContentPane().add(drawingView, BorderLayout.CENTER);
 
         setSize(800, 600);
